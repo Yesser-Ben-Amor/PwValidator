@@ -15,7 +15,9 @@ public class PasswordValidator {
      * @return true wenn das Passwort lang genug ist
      */
     public static boolean hasMinLength(String password, int minLength) {
-        // TODO: Implementierung folgt in GREEN Phase
-        return false;
+        if (password == null) {
+            return false;
+        }
+        return password.length() >= minLength;
     }
 }
