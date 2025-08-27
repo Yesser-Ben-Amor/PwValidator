@@ -29,7 +29,16 @@ public class PasswordValidator {
      * @return true wenn das Passwort mindestens eine Ziffer enthält, false sonst
      */
     public static boolean containsDigit(String password) {
-        // TODO: Implementierung folgt in GREEN Phase
+        if (password == null) {
+            return false;
+        }
+        
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c) && c >= '0' && c <= '9') {
+                return true;
+            }
+        }
+        
         return false;
     }
 }
