@@ -23,22 +23,35 @@ public class PasswordValidator {
     }
     
     /**
-     * Überprüft ob das Passwort mindestens eine Ziffer enthält
+     * Überprüft ob das Passwort mindestens eine ASCII-Ziffer (0-9) enthält
      * 
      * @param password Das zu prüfende Passwort (darf null sein)
-     * @return true wenn das Passwort mindestens eine Ziffer enthält, false sonst
+     * @return true wenn das Passwort mindestens eine ASCII-Ziffer enthält, false bei null oder ohne Ziffern
      */
     public static boolean containsDigit(String password) {
+        // Null-Check: null-Passwort enthält keine Ziffern
         if (password == null) {
             return false;
         }
         
-        for (char c : password.toCharArray()) {
-            if (Character.isDigit(c) && c >= '0' && c <= '9') {
-                return true;
+        // Durchsuche jedes Zeichen nach ASCII-Ziffern (0-9)
+        for (char character : password.toCharArray()) {
+            if (isAsciiDigit(character)) {
+                return true; // Erste Ziffer gefunden - sofort zurückgeben
             }
         }
         
+        // Keine Ziffer gefunden
         return false;
+    }
+    
+    /**
+     * Hilfsmethode: Prüft ob ein Zeichen eine ASCII-Ziffer ist
+     * 
+     * @param c Das zu prüfende Zeichen
+     * @return true wenn c eine ASCII-Ziffer (0-9) ist
+     */
+    private static boolean isAsciiDigit(char c) {
+        return c >= '0' && c <= '9';
     }
 }
