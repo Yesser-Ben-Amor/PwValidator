@@ -51,7 +51,7 @@ public class Main {
                 System.out.println("\n⚠️ SCHWACHES PASSWORT! Bitte verbessern.");
             }
             
-            // Trennlinie erstellen (Java 8 kompatibel)
+            // Trennlinie erstellen
             StringBuilder separator = new StringBuilder();
             for (int i = 0; i < 40; i++) {
                 separator.append("=");
