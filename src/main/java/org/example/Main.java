@@ -56,7 +56,12 @@ public class Main {
         scanner.close();
     }
 
-    // Methode 1: Mindestlänge prüfen
+    /**
+     * Überprüft, ob das Passwort die Mindestlänge erfüllt.
+     * @param password Das zu prüfende Passwort
+     * @param min Die erforderliche Mindestlänge
+     * @return true wenn das Passwort lang genug ist, sonst false
+     */
     public static boolean hatMindestLaenge(String password, int min) {
         if (password == null) {
             return false;
@@ -64,7 +69,11 @@ public class Main {
         return password.length() >= min;
     }
 
-    // Methode 2: Ziffer prüfen
+    /**
+     * Überprüft, ob das Passwort mindestens eine Ziffer enthält.
+     * @param password Das zu prüfende Passwort
+     * @return true wenn eine Ziffer gefunden wird, sonst false
+     */
     public static boolean enthaeltZiffer(String password) {
         if (password == null) {
             return false;
@@ -80,7 +89,11 @@ public class Main {
         return false;
     }
 
-    // Methode 3: Groß- und Kleinbuchstaben prüfen
+    /**
+     * Überprüft, ob das Passwort sowohl Groß- als auch Kleinbuchstaben enthält.
+     * @param password Das zu prüfende Passwort
+     * @return true wenn beide Buchstabenarten vorhanden sind, sonst false
+     */
     public static boolean enthaeltGrossUndKlein(String password) {
         if (password == null) {
             return false;
@@ -106,7 +119,11 @@ public class Main {
         return hasCapital && hasLowerCase;
     }
 
-    // Methode 4: Schwache Passwörter prüfen
+    /**
+     * Überprüft, ob das Passwort in der Liste schwacher Passwörter steht.
+     * @param password Das zu prüfende Passwort
+     * @return true wenn das Passwort schwach ist, sonst false
+     */
     public static boolean istSchwachesPasswort(String password) {
         if (password == null) {
             return true;
@@ -132,7 +149,11 @@ public class Main {
         return false;
     }
 
-    // Methode 5: Sonderzeichen prüfen
+    /**
+     * Überprüft, ob das Passwort mindestens ein Sonderzeichen enthält.
+     * @param password Das zu prüfende Passwort
+     * @return true wenn ein Sonderzeichen gefunden wird, sonst false
+     */
     public static boolean enthaeltSonderzeichen(String password) {
         if (password == null) {
             return false;
@@ -153,7 +174,12 @@ public class Main {
         return false;
     }
 
-    // Methode 6: Zeichengruppen zählen
+    /**
+     * Zählt die Anzahl verschiedener Zeichengruppen im Passwort.
+     * Zeichengruppen: Ziffern, Großbuchstaben, Kleinbuchstaben, Sonderzeichen
+     * @param password Das zu prüfende Passwort
+     * @return Anzahl der verschiedenen Zeichengruppen (0-4)
+     */
     public static int zaehleZeichenGruppen(String password) {
         if (password == null) {
             return 0;
