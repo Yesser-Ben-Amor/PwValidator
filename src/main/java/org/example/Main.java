@@ -2,6 +2,11 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
+    // Konstanten
+    private static final int MIN_PASSWORD_LENGTH = 8;
+    private static final String ALLOWED_SPECIAL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    private static final String EXIT_COMMAND = "exit";
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Der beste Passwort Validator on the City");
@@ -14,13 +19,13 @@ public class Main {
             String password = scanner.nextLine();
             
             // Abbruch Bedingung
-            if(password.equalsIgnoreCase("exit")){
+            if(password.equalsIgnoreCase(EXIT_COMMAND)){
                 System.out.println("Tchao cacao");
                 break;
             }
             
             // Alle Validierungen aufrufen
-            boolean laengeOk = hatMindestLaenge(password, 8);
+            boolean laengeOk = hatMindestLaenge(password, MIN_PASSWORD_LENGTH);
             boolean hatZiffer = enthaeltZiffer(password);
             boolean hatGrossKlein = enthaeltGrossUndKlein(password);
             boolean istSchwach = istSchwachesPasswort(password);
@@ -30,7 +35,7 @@ public class Main {
             // Ergebnisse ausgeben
             System.out.println("\n--- Passwort Analyse ---");
             System.out.println("Passwort: " + password);
-            System.out.println("Mindestlänge (8 Zeichen): " + (laengeOk ? "✓" : "✗"));
+            System.out.println("Mindestlänge (" + MIN_PASSWORD_LENGTH + " Zeichen): " + (laengeOk ? "✓" : "✗"));
             System.out.println("Enthält Ziffer: " + (hatZiffer ? "✓" : "✗"));
             System.out.println("Groß- und Kleinbuchstaben: " + (hatGrossKlein ? "✓" : "✗"));
             System.out.println("Sonderzeichen: " + (hatSonderzeichen ? "✓" : "✗"));
@@ -159,7 +164,7 @@ public class Main {
             return false;
         }
 
-        String erlaubteSonderzeichen = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        String erlaubteSonderzeichen = ALLOWED_SPECIAL_CHARS;
         char[] passwordChars = password.toCharArray();
         char[] sonderChars = erlaubteSonderzeichen.toCharArray();
         
