@@ -21,7 +21,21 @@ public class Main {
             // Abbruch Bedingung
             if(password.equalsIgnoreCase(EXIT_COMMAND)){
                 System.out.println("Tchao cacao");
+                SecurityMonitor.printSecurityStats();
                 break;
+            }
+            
+            // 🚨 SICHERHEITSPRÜFUNG: SQL-Injection-Erkennung
+            if (SecurityMonitor.checkForSQLInjection(password)) {
+                // Bei gesperrter IP: Programm beenden
+                if (SecurityMonitor.isCurrentIPBlocked()) {
+                    System.err.println("🚫 ZUGRIFF VERWEIGERT - IP GESPERRT!");
+                    System.err.println("Das Programm wird beendet.");
+                    scanner.close();
+                    System.exit(1);
+                }
+                // Bei erster Warnung: Zurück zur Eingabe
+                continue;
             }
             
             // Alle Validierungen aufrufen
